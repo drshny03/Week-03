@@ -1,0 +1,52 @@
+package com.tit.day06.runtimeanalysis.filereading;
+
+import java.io.*;
+
+import static java.lang.System.out;
+
+public class FileReading {
+
+
+    //Attribute
+    private String filePath = "C:\\capgeminitraining\\Week-3\\Data Structure\\src\\main\\java\\com\\tit\\day04\\reader\\filereader\\textfile.txt";
+    //constructor
+    public FileReading(){}
+
+    //method to read file using file reader
+    public void readUsingFileReader(){
+        try (FileReader fileReader = new FileReader(filePath)){
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String currentLine;
+            //get every line from file, while it's not empty
+            while((currentLine = bufferedReader.readLine()) != null){
+                //out.print(currentLine);
+            }
+        } catch (FileNotFoundException e) { //handle expected exceptions
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //method to read file using input stream reader
+    public void readUsingInputStreamReader(){
+        try {
+            //create object of file input stream
+            FileInputStream fileInputStream = new FileInputStream(filePath);
+            //create object of input stream reader
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
+            //create object of buffered reader
+            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+            //read all line
+            String currentLine;
+            while((currentLine = bufferedReader.readLine()) != null){
+                //out.print(currentLine);
+            }
+        } catch (FileNotFoundException e) {
+            out.println("File not found");
+        } catch (IOException e) {
+            out.println("Exception during reading file");
+        }
+    }
+
+}
